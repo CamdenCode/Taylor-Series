@@ -29,7 +29,12 @@ void draw() {
   fill(0);
   textSize(funcBoxHeight - 20);
   text("f(x) = " + displayGoal, 12, funcBoxY + (funcBoxHeight / 2) + 20);
-  println(paraPath);
+  fill(255);
+  rect(10, funcBoxY + funcBoxHeight + 20, 100, 60);
+  fill(0);
+  textSize(20);
+  text("Done", 12, funcBoxY + funcBoxHeight + 50);
+  //println(paraPath);
 }
 
 
@@ -46,27 +51,35 @@ void keyPressed() {
         int N0 = key - 48;
         equations.get(paraPath.get(paraPath.size() - 1)).addElement("N0;" + N0);
       } else if (key == 120) {
-        equations.get(paraPath.get(paraPath.size() - 1)).addElement("x ");
+        equations.get(paraPath.get(paraPath.size() - 1)).addElement("x");
       } else if (key == 101) {
-        equations.get(paraPath.get(paraPath.size() - 1)).addElement("e ");
+        equations.get(paraPath.get(paraPath.size() - 1)).addElement("e");
       } else if (key == 43) {
-        equations.get(paraPath.get(paraPath.size() - 1)).addElement("+ ");
+        equations.get(paraPath.get(paraPath.size() - 1)).addElement("+");
       } else if (key == 45) {
-        equations.get(paraPath.get(paraPath.size() - 1)).addElement("- ");
+        equations.get(paraPath.get(paraPath.size() - 1)).addElement("-");
       } else if (key == 40) {
+        
+        // '('
+        
         equations.get(paraPath.get(paraPath.size() - 1)).addElement("P;" + equations.size());
         paraPath.add(equations.size());
-        equations.add(new Equation("", new ArrayList<Float>(), new ArrayList<Equation>(), this)); 
+        equations.add(new Equation("", new ArrayList<Float>(), new ArrayList<Equation>(), this));
+        
+        
       } else if (key == 41) {
         paraPath.remove(paraPath.get(paraPath.size() - 1));
       } else if (key == 99) {
         equations.get(paraPath.get(paraPath.size() - 1)).addElement("C;" + equations.size());
         paraPath.add(equations.size());
-        equations.add(new Equation("", new ArrayList<Float>(), new ArrayList<Equation>(), this));  
+        equations.add(new Equation("", new ArrayList<Float>(), new ArrayList<Equation>(), this));
+        
       } else if (key == 115) {
         equations.get(paraPath.get(paraPath.size() - 1)).addElement("S;" + equations.size());
         paraPath.add(equations.size());
         equations.add(new Equation("", new ArrayList<Float>(), new ArrayList<Equation>(), this));  
+      } else if (key == 42){
+        equations.get(paraPath.get(paraPath.size() - 1)).addElement("*");
       }
     }
   }
